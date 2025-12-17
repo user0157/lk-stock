@@ -34,6 +34,10 @@ def create_app():
     @app.route("/")
     def index():
         return redirect(url_for("data.show_table"))
+    
+    @app.route("/health")
+    def health():
+        return "OK", 200
 
     return app
 
