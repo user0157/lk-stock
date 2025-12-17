@@ -1,1 +1,134 @@
+/* ===== 页面基础 ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6fb;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+/* ===== 标题 ===== */
+h2 {
+    color: #2c3e50;
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+/* ===== 顶部栏 ===== */
+.top-bar {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* ===== 退出按钮（主题化） ===== */
+.logout-btn {
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.logout-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+/* ===== 搜索框 ===== */
+.search-box {
+    width: 100%;
+    max-width: 1000px;
+    margin: 10px auto 15px auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
+}
+
+/* ===== 表格容器（关键：sticky 生效） ===== */
+.table-container {
+    width: 90%;
+    max-width: 1000px;
+    max-height: 70vh;
+    overflow: auto; /* 必须是 auto / scroll */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== 表格 ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* ===== 表头（真正固定） ===== */
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* ===== 单元格 ===== */
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e6e6e6;
+    white-space: nowrap;
+}
+
+/* ===== 行效果 ===== */
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f5f6fa;
+}
+
+tbody tr:hover {
+    background-color: #eef1ff;
+}
+
+/* ===== 最后一行底边 ===== */
+tbody tr:last-of-type td {
+    border-bottom: none;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 600px) {
+    th, td {
+        padding: 8px 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
