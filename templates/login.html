@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>系统登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* ===== 页面背景 ===== */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ===== 登录卡片 ===== */
+        .login-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 360px;
+            padding: 36px 32px;
+            border-radius: 12px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== 标题 ===== */
+        .login-card h2 {
+            margin: 0 0 26px;
+            text-align: center;
+            color: #4a4a4a;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 输入框 ===== */
+        .login-card input {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .login-card input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        /* ===== 登录按钮（主题渐变） ===== */
+        .login-card button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.12s ease;
+        }
+
+        .login-card button:hover {
+            filter: brightness(1.08);
+            transform: translateY(-1px);
+        }
+
+        .login-card button:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== 底部 ===== */
+        .login-footer {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2>🔐 系统登录</h2>
+
+        <form method="post">
+            <input
+                type="text"
+                name="username"
+                placeholder="用户名"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="密码"
+                required
+            >
+
+            <button type="submit">登录</button>
+        </form>
+
+        <div class="login-footer">
+            © 数据管理系统
+        </div>
+    </div>
+
+</body>
+</html>

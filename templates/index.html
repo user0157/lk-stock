@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据表展示</title>
 
+    <!-- 样式 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- 你已有的插件 -->
+    <script src="{{ url_for('static', filename='plugins/table-filter.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/table-sort-v2.js') }}"></script>
+</head>
+
+<body>
+
+    <!-- 顶部栏 -->
+    <div class="top-bar">
+        <h2>📊 接收到的数据</h2>
+
+        <a href="{{ url_for('auth.logout') }}" class="logout-btn">
+            退出登录
+        </a>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="search-box">
+        <input
+            type="text"
+            id="tableSearch"
+            placeholder="🔍 搜索表格内容..."
+            onkeyup="filterTable()"
+        >
+    </div>
+
+    <!-- 表格 -->
+    <div class="table-container">
+        <table class="table-sort table-filter">
+            <thead>
+                <tr>
+                    {% for h in headers %}
+                        <th>{{ h }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    {% for h in headers %}
+                        <td>{{ row[h] }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 搜索 JS -->
+    <script>
+        function filterTable() {
+            const input = document.getElementById("tableSearch");
+            const filter = input.value.toLowerCase();
+
+            const table = document.querySelector("table");
+            const rows = table.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(filter) ? "" : "none";
+            });
+        }
+    </script>
+
+</body>
+</html>
