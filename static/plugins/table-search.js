@@ -1,10 +1,13 @@
-const rows = Array.from(document.querySelectorAll("table tbody tr"));
-const rowTexts = rows.map(row => row.textContent.toLowerCase());
+let debounceTimer;
 
 function filterTable() {
-    const filter = document.getElementById("tableSearch").value.toLowerCase();
+    clearTimeout(debounceTimer);
 
-    rows.forEach((row, i) => {
-        row.style.display = rowTexts[i].includes(filter) ? "" : "none";
-    });
+    debounceTimer = setTimeout(() => {
+        const filter = document.getElementById("tableSearch").value.toLowerCase();
+
+        rows.forEach((row, i) => {
+            row.style.display = rowTexts[i].includes(filter) ? "" : "none";
+        });
+    }, 300); // 等待 300ms 后再触发过滤
 }
