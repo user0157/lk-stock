@@ -11,6 +11,7 @@
     <!-- 你已有的插件 -->
     <script src="{{ url_for('static', filename='plugins/table-filter.js') }}"></script>
     <script src="{{ url_for('static', filename='plugins/table-sort-v2.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/table-search.js') }}"></script>
 </head>
 
 <body>
@@ -55,22 +56,5 @@
             </tbody>
         </table>
     </div>
-
-    <!-- 搜索 JS -->
-    <script>
-        function filterTable() {
-            const input = document.getElementById("tableSearch");
-            const filter = input.value.toLowerCase();
-
-            const table = document.querySelector("table");
-            const rows = table.querySelectorAll("tbody tr");
-
-            rows.forEach(row => {
-                const text = row.innerText.toLowerCase();
-                row.style.display = text.includes(filter) ? "" : "none";
-            });
-        }
-    </script>
-
 </body>
 </html>
