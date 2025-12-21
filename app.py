@@ -1,9 +1,10 @@
 import os
 from flask import Flask, redirect, url_for
 from config import DATABASE_URL
-from models.data_model import db
+from db import db
 from routes.data_routes import data_bp
 from routes.auth_routes import auth_bp
+from routes.main_routes import main_bp
 
 def create_app():
     app = Flask(__name__)
@@ -34,16 +35,7 @@ def create_app():
     # 注册蓝图
     app.register_blueprint(auth_bp)
     app.register_blueprint(data_bp)
-
-    # 根路径
-    @app.route("/")
-    def index():
-        return redirect(url_for("data.show_table"))
-
-    # Render 健康检查
-    @app.route("/health")
-    def health():
-        return "OK", 200
+    app.register_blueprint(main_bp)
 
     return app
 
