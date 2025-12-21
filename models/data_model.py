@@ -1,5 +1,4 @@
 from db import db
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import JSON
 
 class DataRow(db.Model):

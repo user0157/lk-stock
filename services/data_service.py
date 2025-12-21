@@ -1,4 +1,5 @@
-from models.data_model import db, DataRow
+from db import db
+from models.data_model import DataRow
 
 def replace_data(data: list[dict]):
     try:
