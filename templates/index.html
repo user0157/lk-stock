@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据表展示</title>
+{% extends "base.html" %}
 
-    <!-- 样式 -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% block title %}数据表展示{% endblock %}
 
-    <!-- 你已有的插件 -->
-    <script src="{{ url_for('static', filename='plugins/table-filter.js') }}"></script>
-    <script src="{{ url_for('static', filename='plugins/table-sort-v2.js') }}"></script>
-</head>
+{% block extra_css %}
+    <!-- plugins -->
+{% endblock %}
 
-<body>
+{% block content %}
 
-    <!-- 顶部栏 -->
     <div class="top-bar">
         <h2>📊 接收到的数据</h2>
 
@@ -24,7 +16,6 @@
         </a>
     </div>
 
-    <!-- 搜索框 -->
     <div class="search-box">
         <input
             type="text"
@@ -43,7 +34,6 @@
         </button>
     </div>
 
-    <!-- 表格 -->
     <div class="table-container">
         <table class="table-sort table-filter">
             <thead>
@@ -65,29 +55,25 @@
         </table>
     </div>
 
-    <!-- 搜索 JS -->
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='plugins/table-filter.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/table-sort-v2.js') }}"></script>
+
     <script>
         let debounceTimer;
-
-        // 1. 在页面加载时一次性缓存行的文本内容
         const rows = Array.from(document.querySelectorAll("table tbody tr"));
         const rowTexts = rows.map(row => row.textContent.toLowerCase());
 
-        // 2. 执行过滤操作
         function filterTable() {
             clearTimeout(debounceTimer);
-
-            // 设置 debounce，避免每次按键都触发过滤
             debounceTimer = setTimeout(() => {
                 const filter = document.getElementById("tableSearch").value.toLowerCase();
-
                 rows.forEach((row, i) => {
-                    // 根据缓存的 rowTexts 来过滤显示
                     row.style.display = rowTexts[i].includes(filter) ? "" : "none";
                 });
-            }, 300);  // 300ms 延迟执行过滤
+            }, 300);
         }
     </script>
-
-</body>
-</html>
+{% endblock %}
